@@ -15,9 +15,7 @@ async headers() {
       }
     ];
   },
-  images: {
-    domains: ['vercel.com'],
-  },
+  
 }
 
 module.exports = nextConfig
