@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/content/questions.json",
+      "destination": "/public/content/questions.json"
+    }
+  ]
+}
