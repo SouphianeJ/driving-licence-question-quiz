@@ -1,7 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import path from 'path';
+import fs from 'fs';
 
-export default function QuestionApp() {
-  const [questions, setQuestions] = useState([]);
+export async function getStaticProps() {
+  const questionsPath = path.join(process.cwd(), 'public/content/questions.json');
+  const questionsData = fs.readFileSync(questionsPath, 'utf-8');
+  const questions = JSON.parse(questionsData);
+
+  return {
+    props: {
+      questions
+    },
+    revalidate: 3600 // ISR pour mise à jour périodique
+  };
+}
+
+export default function Quiz({ questions }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [showAnswers, setShowAnswers] = useState({
     verification: false,
@@ -9,18 +23,9 @@ export default function QuestionApp() {
     premiers_secours: false,
   });
 
-  useEffect(() => {
-    fetch('/content/questions.json')
-      .then(res => res.json())
-      .then(data => {
-        setQuestions(data);
-        selectNewQuestion(data);
-      });
-  }, []);
-
-  const selectNewQuestion = (questionList = questions) => {
-    const randomIndex = Math.floor(Math.random() * questionList.length);
-    setCurrentQuestion(questionList[randomIndex]);
+  const getRandomQuestion = () => {
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    setCurrentQuestion(questions[randomIndex]);
     setShowAnswers({
       verification: false,
       securite: false,
@@ -28,9 +33,10 @@ export default function QuestionApp() {
     });
   };
 
-  const toggleAnswer = (section) => {
-    setShowAnswers(prev => ({ ...prev, [section]: !prev[section] }));
-  };
+  // Initialisation au premier rendu
+  useState(() => {
+    getRandomQuestion();
+  }, []);
 
   if (!currentQuestion) return <div>Chargement...</div>;
 
@@ -38,36 +44,46 @@ export default function QuestionApp() {
     <div className="container">
       <h1>Question #{currentQuestion.number}</h1>
       
-      <button className="new-question" onClick={() => selectNewQuestion()}>
-        🎲 Nouvelle question
+      <button onClick={getRandomQuestion} className="new-question">
+        Nouvelle question 🎲
       </button>
 
-      <div className="question-section">
-        <h2>Vérification ({currentQuestion.verification.position})</h2>
-        <p>{currentQuestion.verification.question}</p>
-        <button onClick={() => toggleAnswer('verification')}>
-          {showAnswers.verification ? 'Masquer' : 'Afficher'} la réponse
-        </button>
-        {showAnswers.verification && <p className="answer">{currentQuestion.verification.answer}</p>}
-      </div>
+      <QuestionSection
+        title={`Vérification (${currentQuestion.verification.position})`}
+        question={currentQuestion.verification.question}
+        answer={currentQuestion.verification.answer}
+        isShowing={showAnswers.verification}
+        toggle={() => setShowAnswers(s => ({ ...s, verification: !s.verification }))}
+      />
 
-      <div className="question-section">
-        <h2>Sécurité</h2>
-        <p>{currentQuestion.securite.question}</p>
-        <button onClick={() => toggleAnswer('securite')}>
-          {showAnswers.securite ? 'Masquer' : 'Afficher'} la réponse
-        </button>
-        {showAnswers.securite && <p className="answer">{currentQuestion.securite.answer}</p>}
-      </div>
+      <QuestionSection
+        title="Sécurité"
+        question={currentQuestion.securite.question}
+        answer={currentQuestion.securite.answer}
+        isShowing={showAnswers.securite}
+        toggle={() => setShowAnswers(s => ({ ...s, securite: !s.securite }))}
+      />
 
-      <div className="question-section">
-        <h2>Premiers Secours</h2>
-        <p>{currentQuestion.premiers_secours.question}</p>
-        <button onClick={() => toggleAnswer('premiers_secours')}>
-          {showAnswers.premiers_secours ? 'Masquer' : 'Afficher'} la réponse
-        </button>
-        {showAnswers.premiers_secours && <p className="answer">{currentQuestion.premiers_secours.answer}</p>}
-      </div>
+      <QuestionSection
+        title="Premiers Secours"
+        question={currentQuestion.premiers_secours.question}
+        answer={currentQuestion.premiers_secours.answer}
+        isShowing={showAnswers.premiers_secours}
+        toggle={() => setShowAnswers(s => ({ ...s, premiers_secours: !s.premiers_secours }))}
+      />
+    </div>
+  );
+}
+
+function QuestionSection({ title, question, answer, isShowing, toggle }) {
+  return (
+    <div className="question-section">
+      <h2>{title}</h2>
+      <p>{question}</p>
+      <button onClick={toggle} className="answer-toggle">
+        {isShowing ? 'Masquer la réponse' : 'Afficher la réponse'}
+      </button>
+      {isShowing && <p className="answer">{answer}</p>}
     </div>
   );
 }
