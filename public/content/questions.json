@@ -641,7 +641,327 @@
       }
     }
   
-
-
+    {
+      "number": 41,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le réglage du siège conducteur.",
+        "answer": "La commande ou le levier se trouve généralement sur le côté du siège, permettant d’ajuster la position pour un confort optimal."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important d’ajuster correctement son siège ?",
+        "answer": "Pour garantir une bonne visibilité, un accès facile aux commandes et une sécurité maximale en cas d’accident."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le réglage du siège présente une anomalie avant l’examen ?",
+        "answer": "Signaler le problème à l’examinateur et ne pas utiliser le véhicule si la sécurité est compromise."
+      }
+    },
+    {
+      "number": 42,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement du système de climatisation (commande d’air chaud/froid).",
+        "answer": "La commande se situe sur le tableau de bord et permet de régler la température ainsi que l’orientation du flux d’air."
+      },
+      "securite": {
+        "question": "Pourquoi la climatisation est-elle utile, notamment en hiver ?",
+        "answer": "Elle aide à dégivrer le pare-brise et à maintenir une température confortable dans l’habitacle."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de dysfonctionnement du système de climatisation lors d’une situation critique ?",
+        "answer": "Utiliser des moyens alternatifs (comme ouvrir une fenêtre) et prévenir l’examinateur si cela affecte la sécurité."
+      }
+    },
+    {
+      "number": 43,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le système d’indication de vitesse sur le tableau de bord.",
+        "answer": "La vitesse actuelle est affichée sur l’instrumentation centrale, lisible d’un seul coup d’œil."
+      },
+      "securite": {
+        "question": "Pourquoi est-il essentiel de surveiller sa vitesse ?",
+        "answer": "Pour adapter sa conduite aux conditions de circulation et éviter les excès de vitesse qui augmentent les risques d’accident."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de perte de contrôle liée à une vitesse excessive ?",
+        "answer": "Réduire progressivement la vitesse en freinant en douceur et, si nécessaire, appeler les secours."
+      }
+    },
+    {
+      "number": 44,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement du bouton de commande des feux de route.",
+        "answer": "Le bouton, généralement sur la colonne de direction, permet d’activer les feux de route pour une meilleure visibilité sur route non éclairée."
+      },
+      "securite": {
+        "question": "Pourquoi utiliser les feux de route uniquement dans certaines conditions ?",
+        "answer": "Pour éviter d’éblouir les autres usagers et respecter la réglementation en vigueur."
+      },
+      "premiers_secours": {
+        "question": "Que faire si un témoin de dysfonctionnement des feux s'allume en cours de route ?",
+        "answer": "Signaler le problème, réduire la vitesse et, si nécessaire, s’arrêter en sécurité pour vérifier ou demander de l’aide."
+      }
+    },
+    {
+      "number": 45,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez la commande d’allumage du klaxon.",
+        "answer": "Le klaxon s’active en appuyant sur la partie centrale du volant."
+      },
+      "securite": {
+        "question": "Pourquoi le klaxon doit-il être utilisé avec parcimonie ?",
+        "answer": "Il est réservé à la prévention d’un danger immédiat afin de ne pas créer de nuisances ou de paniques inutiles."
+      },
+      "premiers_secours": {
+        "question": "Que faire si, en situation d’urgence, le klaxon ne fonctionne pas ?",
+        "answer": "Utiliser d’autres moyens (feux, gestes) pour attirer l’attention et contacter les secours si nécessaire."
+      }
+    },
+    {
+      "number": 46,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Vérifiez le bon fonctionnement du levier de vitesses.",
+        "answer": "Le levier doit se déplacer facilement entre les positions, sans résistance anormale."
+      },
+      "securite": {
+        "question": "Pourquoi est-il crucial que le levier de vitesses fonctionne correctement ?",
+        "answer": "Pour garantir un changement de vitesse fluide et un contrôle optimal du véhicule, essentiel en situation d’urgence."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le levier de vitesses présente une anomalie en cours d’examen ?",
+        "answer": "Le signaler immédiatement à l’examinateur et procéder prudemment, voire interrompre la conduite si nécessaire."
+      }
+    },
+    {
+      "number": 47,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le système de verrouillage des portières.",
+        "answer": "La commande se trouve sur la portière ou sur la télécommande et permet de verrouiller ou déverrouiller toutes les portières."
+      },
+      "securite": {
+        "question": "Pourquoi vérifier le verrouillage des portières ?",
+        "answer": "Pour assurer la sécurité des passagers et éviter les ouvertures accidentelles lors d’un accident."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système de verrouillage ne fonctionne pas correctement ?",
+        "answer": "Utiliser le verrouillage manuel et signaler le dysfonctionnement à l’examinateur."
+      }
+    },
+    {
+      "number": 48,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Contrôlez l’état et le fonctionnement de l’éclairage intérieur.",
+        "answer": "Les lumières intérieures doivent s’allumer lors de l’ouverture des portes ou au démarrage du véhicule."
+      },
+      "securite": {
+        "question": "Quel est l’intérêt de l’éclairage intérieur pour la sécurité ?",
+        "answer": "Il permet de vérifier l’état des équipements et facilite la conduite en conditions de faible luminosité."
+      },
+      "premiers_secours": {
+        "question": "Que faire si l’éclairage intérieur est défectueux en situation d’urgence ?",
+        "answer": "Utiliser une source lumineuse alternative (lampe de poche) et signaler le problème."
+      }
+    },
+    {
+      "number": 49,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le voyant de détection d’obstacles (si équipé).",
+        "answer": "Le voyant s’allume pour signaler la présence d’un obstacle lors des manœuvres de stationnement."
+      },
+      "securite": {
+        "question": "En quoi ce système contribue-t-il à la sécurité ?",
+        "answer": "Il aide à prévenir les collisions en alertant le conducteur lors de manœuvres rapprochées."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système de détection ne fonctionne pas ?",
+        "answer": "Procéder manuellement en se fiant aux repères visuels et demander de l’aide si nécessaire."
+      }
+    },
+    {
+      "number": 50,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Vérifiez le fonctionnement du système d’aide au stationnement (capteurs ou caméra).",
+        "answer": "Le système doit émettre des signaux ou afficher des images pour alerter en cas d’obstacle."
+      },
+      "securite": {
+        "question": "Pourquoi utiliser ce système pendant le stationnement ?",
+        "answer": "Pour faciliter la manœuvre et réduire le risque de collision avec des obstacles."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de dysfonctionnement du système d’aide au stationnement ?",
+        "answer": "Effectuer la manœuvre avec prudence en s’appuyant sur ses repères visuels et demander de l’aide si besoin."
+      }
+    },
+    {
+      "number": 51,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement du régulateur de vitesse (si non déjà fait).",
+        "answer": "La commande, généralement sur la colonne de direction, permet de fixer et maintenir une vitesse constante."
+      },
+      "securite": {
+        "question": "Pourquoi est-il utile d’utiliser le régulateur de vitesse ?",
+        "answer": "Il permet de maintenir une vitesse constante, ce qui favorise une conduite sécurisée sur autoroute."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le régulateur de vitesse dysfonctionne en situation d'urgence ?",
+        "answer": "Désactiver immédiatement et reprendre le contrôle manuel du véhicule."
+      }
+    },
+    {
+      "number": 52,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Vérifiez l’état des commandes du système audio.",
+        "answer": "Les commandes doivent être clairement indiquées et fonctionnelles pour permettre l’écoute de messages ou instructions."
+      },
+      "securite": {
+        "question": "Pourquoi le système audio peut-il contribuer à la sécurité ?",
+        "answer": "Il permet de recevoir des alertes et informations en temps réel, notamment en cas d’urgence."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système audio est défectueux en cas d’alerte ?",
+        "answer": "Utiliser un téléphone externe pour contacter les secours."
+      }
+    },
+    {
+      "number": 53,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le voyant de détection de niveaux bas (ex : liquide lave-glace).",
+        "answer": "Le voyant s'allume sur le tableau de bord lorsque le niveau est insuffisant."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de surveiller ces niveaux ?",
+        "answer": "Pour garantir une bonne visibilité et éviter tout dysfonctionnement pouvant compromettre la sécurité."
+      },
+      "premiers_secours": {
+        "question": "Que faire si un voyant critique reste allumé pendant l’examen ?",
+        "answer": "Signaler le problème et, si nécessaire, arrêter le véhicule en sécurité."
+      }
+    },
+    {
+      "number": 54,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Vérifiez le bon fonctionnement des commandes de ventilation (pour dégivrage/désembuage).",
+        "answer": "Les commandes doivent permettre de régler la température et l’orientation du flux d’air."
+      },
+      "securite": {
+        "question": "Pourquoi ces commandes sont-elles essentielles ?",
+        "answer": "Elles garantissent une bonne visibilité et le confort de conduite en conditions difficiles."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de dysfonctionnement du système de ventilation en situation d’urgence ?",
+        "answer": "Utiliser des moyens alternatifs (ouvrir une fenêtre) et avertir l’examinateur."
+      }
+    },
+    {
+      "number": 55,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le bouton de commande des feux d’ambiance (si équipé).",
+        "answer": "Le bouton se trouve généralement sur la console centrale et permet de régler l’éclairage intérieur d’ambiance."
+      },
+      "securite": {
+        "question": "Quelle utilité peut avoir l’éclairage d’ambiance ?",
+        "answer": "Il peut contribuer au confort visuel lors de la conduite nocturne, sans toutefois remplacer les feux standards."
+      },
+      "premiers_secours": {
+        "question": "Que faire si ce système est défectueux en situation critique ?",
+        "answer": "Se fier aux feux standards et signaler le dysfonctionnement lors du contrôle technique."
+      }
+    },
+    {
+      "number": 56,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Contrôlez l’état du volant pour détecter d’éventuelles anomalies.",
+        "answer": "Le volant doit être solide, sans jeu excessif et en bon état général."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de vérifier l’état du volant ?",
+        "answer": "Un volant défectueux peut compromettre le contrôle du véhicule et mettre en danger la sécurité de tous."
+      },
+      "premiers_secours": {
+        "question": "Que faire si une anomalie est constatée sur le volant ?",
+        "answer": "La signaler immédiatement à l’examinateur et ne pas utiliser le véhicule si la sécurité est compromise."
+      }
+    },
+    {
+      "number": 57,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement du système de navigation (si équipé).",
+        "answer": "Le système affiche les itinéraires et cartes, facilitant ainsi la navigation."
+      },
+      "securite": {
+        "question": "En quoi le système de navigation peut-il renforcer la sécurité ?",
+        "answer": "Il aide à suivre un itinéraire sûr et à éviter les zones à risque."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système de navigation dysfonctionne en situation critique ?",
+        "answer": "Se fier aux repères routiers et utiliser un téléphone pour contacter les secours si besoin."
+      }
+    },
+    {
+      "number": 58,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Vérifiez le bon réglage des rétroviseurs extérieurs.",
+        "answer": "Les rétroviseurs doivent être ajustés pour offrir une vision complète des angles morts."
+      },
+      "securite": {
+        "question": "Pourquoi un bon réglage des rétroviseurs est-il essentiel ?",
+        "answer": "Il permet d’éviter les angles morts et ainsi de mieux anticiper la circulation."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de défaillance des rétroviseurs ?",
+        "answer": "Ajuster manuellement si possible et signaler le problème dès que possible."
+      }
+    },
+    {
+      "number": 59,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez l’état des commandes du système d’assistance au démarrage en côte.",
+        "answer": "Les boutons doivent être clairement indiqués et fonctionnels pour faciliter le démarrage sur une pente."
+      },
+      "securite": {
+        "question": "Pourquoi est-il utile d’avoir ce système ?",
+        "answer": "Il aide à éviter le recul du véhicule lors d’un démarrage sur côte."
+      },
+      "premiers_secours": {
+        "question": "Que faire si ce système ne fonctionne pas en situation d'urgence ?",
+        "answer": "Utiliser le frein à main et démarrer manuellement en toute prudence."
+      }
+    },
+    {
+      "number": 60,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Contrôlez l’état des indicateurs lumineux du tableau de bord.",
+        "answer": "Tous les voyants doivent s’allumer brièvement au démarrage et fonctionner correctement ensuite."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de vérifier ces indicateurs ?",
+        "answer": "Ils permettent de détecter rapidement toute anomalie avant de prendre la route."
+      },
+      "premiers_secours": {
+        "question": "Que faire si un indicateur critique reste allumé ?",
+        "answer": "Arrêter le véhicule en sécurité et consulter un technicien ou appeler les secours."
+      }
+    }
+  
+}
 
 
