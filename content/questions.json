@@ -960,6 +960,648 @@
         "question": "Que faire si un indicateur critique reste allumé ?",
         "answer": "Arrêter le véhicule en sécurité et consulter un technicien ou appeler les secours."
       }
+    },
+    {
+      "number": 61,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Peut-on fixer tous les sièges enfants sur des attaches Isofix ?",
+        "answer": "Non, seuls les sièges compatibles avec le système Isofix peuvent être fixés de cette façon."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de vérifier la fixation des sièges enfants ?",
+        "answer": "Pour garantir la sécurité des enfants en cas d'accident."
+      },
+      "premiers_secours": {
+        "question": "Comment vérifier rapidement l'efficacité du système de fixation pour un enfant ?",
+        "answer": "En s'assurant que le siège est solidement ancré et que les ceintures se verrouillent correctement."
+      }
+    },
+    {
+      "number": 62,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez comment vérifier la profondeur des sculptures d'un pneu.",
+        "answer": "En utilisant le témoin d'usure intégré qui indique si la profondeur est supérieure à 1,6 mm."
+      },
+      "securite": {
+        "question": "Pourquoi est-il crucial de vérifier la profondeur des pneus ?",
+        "answer": "Pour garantir une bonne adhérence sur la chaussée et éviter les risques de dérapage."
+      },
+      "premiers_secours": {
+        "question": "En cas d'accident, comment l'usure des pneus peut-elle affecter la sécurité ?",
+        "answer": "Des pneus usés augmentent le risque de dérapage et peuvent aggraver les conséquences d'un accident."
+      }
+    },
+    {
+      "number": 63,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Contrôlez le bon fonctionnement du système d'assistance au démarrage en côte.",
+        "answer": "Le système retient le véhicule sur une pente pour éviter le recul lors du démarrage."
+      },
+      "securite": {
+        "question": "Pourquoi utiliser ce système est-il important ?",
+        "answer": "Il facilite le démarrage sur pente et prévient les risques liés au recul."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système d'assistance au démarrage en côte ne fonctionne pas ?",
+        "answer": "Utiliser le frein à main et démarrer manuellement en s'assurant de la sécurité du véhicule."
+      }
+    },
+    {
+      "number": 64,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez comment régler la limitation de vitesse.",
+        "answer": "La commande se trouve sur le volant ou la colonne de direction et permet de fixer une vitesse maximale."
+      },
+      "securite": {
+        "question": "Pourquoi fixer une vitesse limite est-il essentiel ?",
+        "answer": "Pour éviter les excès de vitesse et assurer une conduite plus sécurisée."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système de limitation de vitesse dysfonctionne ?",
+        "answer": "Désactiver le système et reprendre le contrôle manuel du véhicule."
+      }
+    },
+    {
+      "number": 65,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez comment passer des feux de croisement aux feux de route.",
+        "answer": "En utilisant le levier sur la colonne de direction, le pousser vers le tableau de bord active les feux de route."
+      },
+      "securite": {
+        "question": "Pourquoi ne pas utiliser les feux de route en agglomération ?",
+        "answer": "Ils risquent d'éblouir les autres usagers."
+      },
+      "premiers_secours": {
+        "question": "Que faire si un voyant de dysfonctionnement des feux s'allume en cours de route ?",
+        "answer": "Signaler le problème et réduire la vitesse tout en conduisant prudemment."
+      }
+    },
+    {
+      "number": 66,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Contrôlez le fonctionnement du système de freinage d'urgence (ABS).",
+        "answer": "En effectuant un freinage d'urgence simulé, l'ABS doit empêcher le blocage des roues."
+      },
+      "securite": {
+        "question": "Pourquoi l'ABS est-il crucial en cas de freinage d'urgence ?",
+        "answer": "Il permet de conserver le contrôle directionnel du véhicule."
+      },
+      "premiers_secours": {
+        "question": "Que faire si, malgré l'utilisation de l'ABS, un accident survient ?",
+        "answer": "Sécuriser le véhicule et appeler les secours immédiatement."
+      }
+    },
+    {
+      "number": 67,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement des feux diurnes.",
+        "answer": "Les feux diurnes s'allument automatiquement au démarrage pour améliorer la visibilité du véhicule pendant la journée."
+      },
+      "securite": {
+        "question": "Quelle est l'utilité des feux diurnes ?",
+        "answer": "Ils augmentent la visibilité du véhicule pour les autres usagers pendant la journée."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système des feux diurnes est défectueux ?",
+        "answer": "Redoubler de vigilance et signaler le dysfonctionnement lors du contrôle technique."
+      }
+    },
+    {
+      "number": 68,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez l'écran du système de contrôle de pression des pneus (si équipé).",
+        "answer": "L'écran affiche la pression de chaque pneu et alerte en cas de baisse."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de maintenir la bonne pression des pneus ?",
+        "answer": "Pour assurer une bonne adhérence et éviter les risques d'accident."
+      },
+      "premiers_secours": {
+        "question": "Que faire si une alerte de pression basse apparaît en roulant ?",
+        "answer": "S'arrêter en sécurité et vérifier la pression des pneus."
+      }
+    },
+    {
+      "number": 69,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement du système d’aide au freinage d’urgence (AFU).",
+        "answer": "Le système amplifie la force de freinage en situation d'urgence pour optimiser l'arrêt du véhicule."
+      },
+      "securite": {
+        "question": "En quoi l’AFU améliore-t-il la sécurité ?",
+        "answer": "Il permet un freinage plus efficace lors d'une situation critique."
+      },
+      "premiers_secours": {
+        "question": "Que faire si l’AFU ne fonctionne pas en cas d'urgence ?",
+        "answer": "Utiliser le frein manuel en appliquant une pression progressive."
+      }
+    },
+    {
+      "number": 70,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le bon fonctionnement des feux de position.",
+        "answer": "Les feux de position doivent être allumés et fournir une lumière suffisante pour signaler la présence du véhicule."
+      },
+      "securite": {
+        "question": "Quelle est l'importance des feux de position ?",
+        "answer": "Ils assurent la visibilité du véhicule, surtout dans des conditions de faible luminosité."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de défaillance des feux de position ?",
+        "answer": "Signaler le problème et conduire avec une prudence accrue."
+      }
+    },
+    {
+      "number": 71,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement du verrouillage centralisé du véhicule.",
+        "answer": "Le système permet de verrouiller/déverrouiller toutes les portières simultanément via la télécommande ou la commande sur le tableau de bord."
+      },
+      "securite": {
+        "question": "Pourquoi le verrouillage centralisé est-il important ?",
+        "answer": "Il renforce la sécurité du véhicule en évitant les intrusions."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le verrouillage centralisé dysfonctionne ?",
+        "answer": "Utiliser le verrouillage manuel et signaler le problème."
+      }
+    },
+    {
+      "number": 72,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le système de détection de fatigue ou d'alerte de franchissement de ligne (si équipé).",
+        "answer": "Le système avertit le conducteur par des signaux sonores et visuels en cas de dérive involontaire."
+      },
+      "securite": {
+        "question": "Pourquoi ce système est-il utile ?",
+        "answer": "Il aide à prévenir les accidents dus à la somnolence ou à la distraction."
+      },
+      "premiers_secours": {
+        "question": "Que faire si ce système se déclenche de manière intempestive ?",
+        "answer": "Faire vérifier le système par un professionnel et rester concentré sur la conduite."
+      }
+    },
+    {
+      "number": 73,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez la commande d'ouverture et fermeture du toit ouvrant (si équipé).",
+        "answer": "Le toit ouvrant se contrôle via un bouton sur le tableau de bord qui permet de l'ouvrir ou de le fermer."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important que le toit ouvrant soit bien fermé ?",
+        "answer": "Pour éviter toute distraction et garantir la sécurité en cas d'accident."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le toit ouvrant reste ouvert en roulant ?",
+        "answer": "Le refermer immédiatement ou signaler le dysfonctionnement à l’examinateur."
+      }
+    },
+    {
+      "number": 74,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez la commande d'aide au démarrage en côte.",
+        "answer": "La commande retient le véhicule lors du démarrage sur pente afin d'empêcher le recul."
+      },
+      "securite": {
+        "question": "Pourquoi ce système est-il utile ?",
+        "answer": "Il facilite le démarrage sur une pente et prévient les risques liés au recul."
+      },
+      "premiers_secours": {
+        "question": "Que faire si ce système est défaillant ?",
+        "answer": "Utiliser le frein à main et démarrer manuellement avec prudence."
+      }
+    },
+    {
+      "number": 75,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement des feux antibrouillard.",
+        "answer": "Les feux antibrouillard s'activent via un bouton dédié et améliorent la visibilité en cas de brouillard."
+      },
+      "securite": {
+        "question": "Pourquoi les feux antibrouillard sont-ils importants ?",
+        "answer": "Ils augmentent la visibilité du véhicule dans des conditions de faible visibilité."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de dysfonctionnement des feux antibrouillard ?",
+        "answer": "Utiliser les feux de croisement et signaler le dysfonctionnement."
+      }
+    },
+    {
+      "number": 76,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le système d'indication de consommation de carburant (si équipé).",
+        "answer": "Le système affiche la consommation en temps réel sur le tableau de bord."
+      },
+      "securite": {
+        "question": "Pourquoi surveiller la consommation de carburant ?",
+        "answer": "Pour anticiper les arrêts et éviter la panne sèche."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de panne sèche en cours de route ?",
+        "answer": "S’arrêter en sécurité et appeler les secours."
+      }
+    },
+    {
+      "number": 77,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez l'écran du système de contrôle de la pression des pneus.",
+        "answer": "L'écran affiche la pression de chaque pneu et alerte en cas de pression insuffisante."
+      },
+      "securite": {
+        "question": "Pourquoi est-il crucial de maintenir la bonne pression des pneus ?",
+        "answer": "Pour garantir une bonne adhérence et éviter les risques d'accident."
+      },
+      "premiers_secours": {
+        "question": "Que faire si une alerte de pression basse apparaît en roulant ?",
+        "answer": "S'arrêter en sécurité pour vérifier et ajuster la pression."
+      }
+    },
+    {
+      "number": 78,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement des commandes d’éclairage de la plaque d’immatriculation.",
+        "answer": "Les feux de plaque s'allument via un interrupteur ou automatiquement au démarrage pour assurer la lisibilité."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important que la plaque d’immatriculation soit bien éclairée ?",
+        "answer": "Pour faciliter sa lecture lors des contrôles et garantir la conformité réglementaire."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de défaillance de l'éclairage de la plaque ?",
+        "answer": "Signaler le dysfonctionnement et conduire avec une prudence accrue."
+      }
+    },
+    {
+      "number": 79,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez comment activer le système de navigation (si équipé).",
+        "answer": "Le système s'active via un bouton sur la console centrale et affiche l'itinéraire sur l'écran."
+      },
+      "securite": {
+        "question": "Pourquoi utiliser un système de navigation ?",
+        "answer": "Pour suivre un itinéraire sûr et éviter les zones à risque."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système de navigation dysfonctionne en cas d'urgence ?",
+        "answer": "Utiliser des cartes papier ou demander l’aide d’un passager pour lire l’itinéraire."
+      }
+    },
+    {
+      "number": 80,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement du système d’assistance au stationnement (si équipé).",
+        "answer": "Le système affiche des alertes visuelles et sonores pour aider à manœuvrer dans des espaces restreints."
+      },
+      "securite": {
+        "question": "Pourquoi ce système est-il utile lors du stationnement ?",
+        "answer": "Il aide à éviter les collisions avec des obstacles proches."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système d'assistance au stationnement ne fonctionne pas ?",
+        "answer": "S'appuyer sur ses repères visuels et réaliser la manœuvre avec prudence."
+      }
+    },
+    {
+      "number": 81,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement du système de démarrage sans clé.",
+        "answer": "Le système permet de démarrer le véhicule en appuyant sur un bouton, sans insérer la clé physique, grâce à une télécommande ou un badge."
+      },
+      "securite": {
+        "question": "Pourquoi ce système est-il avantageux en termes de sécurité ?",
+        "answer": "Il offre une commodité accrue et peut réduire le risque de vol par effraction."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système ne répond pas en situation d'urgence ?",
+        "answer": "Utiliser la clé manuelle et signaler le dysfonctionnement à l'examinateur."
+      }
+    },
+    {
+      "number": 82,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement du régulateur de vitesse adaptatif (si équipé).",
+        "answer": "Le système adapte automatiquement la vitesse en fonction du trafic et maintient une distance de sécurité avec le véhicule précédent."
+      },
+      "securite": {
+        "question": "Pourquoi est-ce important pour la sécurité ?",
+        "answer": "Cela aide à prévenir les collisions en maintenant une distance sécurisée en fonction du trafic."
+      },
+      "premiers_secours": {
+        "question": "Que faire si ce système dysfonctionne en situation critique ?",
+        "answer": "Désactiver le système et reprendre le contrôle manuel du véhicule."
+      }
+    },
+    {
+      "number": 83,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Vérifiez le bon fonctionnement des commandes du système audio/infodivertissement.",
+        "answer": "Les commandes doivent répondre pour changer de source, régler le volume et permettre l'écoute d'instructions ou alertes."
+      },
+      "securite": {
+        "question": "En quoi ce système peut-il contribuer à la sécurité ?",
+        "answer": "Il permet de recevoir des alertes importantes (navigation, sécurité) sans distraire le conducteur."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système audio ne fonctionne pas lors d'une alerte ?",
+        "answer": "Utiliser un téléphone externe pour recevoir les informations et contacter les secours si besoin."
+      }
+    },
+    {
+      "number": 84,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez la commande du régulateur de distance (si équipé).",
+        "answer": "La commande, souvent intégrée au régulateur de vitesse, permet de fixer la distance souhaitée avec le véhicule précédent."
+      },
+      "securite": {
+        "question": "Pourquoi fixer une distance de sécurité est-il essentiel ?",
+        "answer": "Pour éviter les collisions et maintenir un espace de sécurité adapté à la circulation."
+      },
+      "premiers_secours": {
+        "question": "Que faire si ce système est défectueux ?",
+        "answer": "Augmenter manuellement la distance de sécurité et conduire avec une vigilance accrue."
+      }
+    },
+    {
+      "number": 85,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Vérifiez le bon fonctionnement du système de surveillance des angles morts (si équipé).",
+        "answer": "Le système doit avertir le conducteur par des signaux visuels ou sonores en cas de présence d'un véhicule dans l'angle mort."
+      },
+      "securite": {
+        "question": "Pourquoi ce système est-il utile ?",
+        "answer": "Il aide à prévenir les collisions lors des changements de voie en alertant sur des véhicules non visibles dans les rétroviseurs."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système de surveillance des angles morts dysfonctionne ?",
+        "answer": "Augmenter l'utilisation des rétroviseurs et vérifier manuellement les angles morts avant de changer de voie."
+      }
+    },
+    {
+      "number": 86,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement de l'indicateur de consommation de carburant.",
+        "answer": "L'écran affiche la consommation en temps réel ou en moyenne, permettant d'anticiper un éventuel besoin de ravitaillement."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de surveiller cette consommation ?",
+        "answer": "Pour éviter la panne sèche et adapter sa conduite à la consommation."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de consommation anormale détectée en cours de route ?",
+        "answer": "S'arrêter en sécurité pour vérifier la situation et, si nécessaire, contacter une assistance."
+      }
+    },
+    {
+      "number": 87,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Vérifiez le bon fonctionnement du système de surveillance de la pression des pneus.",
+        "answer": "L'écran ou les voyants doivent indiquer la pression de chaque pneu et alerter en cas de défaillance."
+      },
+      "securite": {
+        "question": "Pourquoi est-il crucial de maintenir la bonne pression des pneus ?",
+        "answer": "Pour garantir l'adhérence, la stabilité et prévenir les risques de crevaison."
+      },
+      "premiers_secours": {
+        "question": "Que faire si une alerte de pression basse apparaît ?",
+        "answer": "S'arrêter en sécurité, vérifier et ajuster la pression des pneus si nécessaire."
+      }
+    },
+    {
+      "number": 88,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez comment activer le système de navigation vocal (si équipé).",
+        "answer": "Le système s'active via un bouton dédié et fournit des instructions vocales pour guider la navigation."
+      },
+      "securite": {
+        "question": "Pourquoi ce système renforce-t-il la sécurité ?",
+        "answer": "Il permet de recevoir des informations sans détourner le regard de la route."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système vocal dysfonctionne ?",
+        "answer": "Utiliser un autre moyen de navigation (cartes papier ou assistance d'un passager) et signaler le problème."
+      }
+    },
+    {
+      "number": 89,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Vérifiez le bon fonctionnement du système de contrôle de stabilité (ESP).",
+        "answer": "Le système ajuste automatiquement le freinage et la puissance moteur pour maintenir la stabilité du véhicule."
+      },
+      "securite": {
+        "question": "En quoi l'ESP contribue-t-il à la sécurité ?",
+        "answer": "Il aide à éviter le dérapage et à conserver le contrôle en situation critique."
+      },
+      "premiers_secours": {
+        "question": "Que faire si l'ESP semble défaillant ?",
+        "answer": "Conduire avec une prudence accrue et signaler immédiatement le dysfonctionnement."
+      }
+    },
+    {
+      "number": 90,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement du système d’aide au stationnement (capteurs ou caméra).",
+        "answer": "Le système affiche des signaux visuels et sonores pour avertir le conducteur des obstacles lors du stationnement."
+      },
+      "securite": {
+        "question": "Pourquoi ce système est-il utile lors du stationnement ?",
+        "answer": "Il facilite la manœuvre et réduit le risque de collision avec des obstacles proches."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système d’aide au stationnement ne fonctionne pas ?",
+        "answer": "Utiliser ses repères visuels et manœuvrer prudemment, en sollicitant éventuellement l'aide d'un passager."
+      }
+    },
+    {
+      "number": 91,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Vérifiez l'état des commandes du système d'assistance au freinage d'urgence (AFU).",
+        "answer": "Les commandes doivent permettre d’amplifier la force de freinage en situation d'urgence sans bloquer les roues."
+      },
+      "securite": {
+        "question": "Pourquoi l’AFU est-il crucial ?",
+        "answer": "Il permet d'obtenir un freinage optimal et de conserver le contrôle du véhicule lors d’un freinage brusque."
+      },
+      "premiers_secours": {
+        "question": "Que faire si l'AFU ne se déclenche pas ?",
+        "answer": "Freiner manuellement en appliquant une pression progressive et sécuriser le véhicule."
+      }
+    },
+    {
+      "number": 92,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez l'écran multimédia affichant les informations essentielles du véhicule.",
+        "answer": "L'écran doit afficher clairement la température, le kilométrage et d'autres informations importantes."
+      },
+      "securite": {
+        "question": "Pourquoi ces informations sont-elles importantes ?",
+        "answer": "Elles permettent de surveiller l'état du véhicule en temps réel pour anticiper tout problème."
+      },
+      "premiers_secours": {
+        "question": "Que faire si un indicateur critique reste allumé ?",
+        "answer": "Arrêter le véhicule en sécurité et consulter un technicien ou contacter les secours si nécessaire."
+      }
+    },
+    {
+      "number": 93,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Vérifiez le bon fonctionnement des clignotants automatiques (si équipé).",
+        "answer": "Le système doit activer les clignotants automatiquement lors d’un changement de direction."
+      },
+      "securite": {
+        "question": "Pourquoi est-ce utile ?",
+        "answer": "Cela renforce la signalisation lors des manœuvres et aide à prévenir les accidents."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système automatique de clignotants dysfonctionne ?",
+        "answer": "Utiliser manuellement les clignotants et informer l'examinateur."
+      }
+    },
+    {
+      "number": 94,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement du système d'assistance au freinage (ABS).",
+        "answer": "L'ABS empêche le blocage des roues en cas de freinage d'urgence, maintenant le contrôle directionnel."
+      },
+      "securite": {
+        "question": "Pourquoi est-ce crucial pour la sécurité ?",
+        "answer": "Pour éviter le dérapage et permettre un freinage efficace tout en conservant la maniabilité du véhicule."
+      },
+      "premiers_secours": {
+        "question": "Que faire si l'ABS ne se déclenche pas en situation d'urgence ?",
+        "answer": "Freiner progressivement et reprendre le contrôle manuel, puis signaler le dysfonctionnement."
+      }
+    },
+    {
+      "number": 95,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez où s'effectue le changement d'une ampoule à l'avant du véhicule.",
+        "answer": "Le compartiment des phares se trouve sous le capot et l'ampoule se change en retirant le couvercle."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de changer une ampoule défectueuse ?",
+        "answer": "Pour garantir une bonne visibilité et éviter d'éblouir les autres usagers."
+      },
+      "premiers_secours": {
+        "question": "Que faire en cas de panne d'une ampoule critique en conduisant ?",
+        "answer": "Réduire la vitesse, s'arrêter en sécurité et changer l'ampoule si possible ou appeler à l'assistance."
+      }
+    },
+    {
+      "number": 96,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement du système de recyclage de l'air (si équipé).",
+        "answer": "Le système recycle l'air dans l'habitacle pour maintenir une température stable et réduire la formation de buée."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de contrôler ce système ?",
+        "answer": "Pour éviter une mauvaise visibilité due à la buée sur les vitres."
+      },
+      "premiers_secours": {
+        "question": "Que faire si le système de recyclage dysfonctionne ?",
+        "answer": "Utiliser d'autres modes de ventilation et vérifier manuellement la clarté des vitres."
+      }
+    },
+    {
+      "number": 97,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez le fonctionnement de l'essuie-glace arrière (si équipé).",
+        "answer": "L'essuie-glace arrière doit s'activer et nettoyer efficacement la vitre arrière."
+      },
+      "securite": {
+        "question": "Pourquoi est-il important de vérifier l'essuie-glace arrière ?",
+        "answer": "Pour assurer une bonne visibilité lors de conditions météorologiques défavorables."
+      },
+      "premiers_secours": {
+        "question": "Que faire si l'essuie-glace arrière ne fonctionne pas ?",
+        "answer": "Utiliser les essuie-glaces avant pour améliorer la visibilité et conduire prudemment."
+      }
+    },
+    {
+      "number": 98,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez le fonctionnement des feux de position arrière.",
+        "answer": "Les feux de position arrière doivent être allumés et fournir une lumière continue pour signaler le véhicule."
+      },
+      "securite": {
+        "question": "Quelles sont les conséquences en cas de défaillance des feux de position arrière ?",
+        "answer": "Le véhicule risque de ne pas être visible, augmentant le risque de collision."
+      },
+      "premiers_secours": {
+        "question": "Comment l’alerte du SAIP est-elle diffusée en cas de dysfonctionnement ?",
+        "answer": "Grâce aux sirènes, aux médias et à l'application SAIP."
+      }
+    },
+    {
+      "number": 99,
+      "verification": {
+        "position": "Intérieure",
+        "question": "Montrez l'indicateur de pression d'air des pneus sur le tableau de bord (si équipé).",
+        "answer": "L'indicateur affiche la pression de chaque pneu et alerte en cas de baisse."
+      },
+      "securite": {
+        "question": "Pourquoi vérifier régulièrement la pression des pneus est-il crucial ?",
+        "answer": "Pour assurer une bonne tenue de route et prévenir les risques de crevaison."
+      },
+      "premiers_secours": {
+        "question": "Que faire si l'indicateur signale une pression insuffisante en roulant ?",
+        "answer": "S'arrêter en sécurité et ajuster la pression des pneus."
+      }
+    },
+    {
+      "number": 100,
+      "verification": {
+        "position": "Extérieure",
+        "question": "Montrez où se situent les gicleurs de lave-glace avant.",
+        "answer": "Ils se trouvent généralement sur le pare-brise, intégrés au système de nettoyage."
+      },
+      "securite": {
+        "question": "Quelle est la principale conséquence d’un dispositif de lave-glace défaillant ?",
+        "answer": "Une mauvaise visibilité due à l’incapacité de nettoyer le pare-brise."
+      },
+      "premiers_secours": {
+        "question": "Qu’est-ce qu’un défibrillateur automatisé externe (DAE) ?",
+        "answer": "C’est un appareil qui peut rétablir une activité cardiaque normale en cas d’arrêt cardiaque."
+      }
     }
+  
+
   ]
 
