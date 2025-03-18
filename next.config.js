@@ -15,12 +15,7 @@ const nextConfig = {
       }
     ];
   },
-  experimental: {
-    appDir: false
-},
-
-
-webpack(config) {
+  webpack(config) {
   config.resolve.fallback = { fs: false };
   return config;
 }
