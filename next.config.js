@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   // Activer si vous utilisez des images externes
-async headers() {
+  async headers() {
     return [
       {
         source: '/content/questions.json',
@@ -15,6 +15,15 @@ async headers() {
       }
     ];
   },
+  experimental: {
+    appDir: false
+},
+
+
+webpack(config) {
+  config.resolve.fallback = { fs: false };
+  return config;
+}
   
 }
 
