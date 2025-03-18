@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function QuestionDisplay({ question }) {
   const [showVerification, setShowVerification] = useState(false);
   const [showSecurite, setShowSecurite] = useState(false);
   const [showPremierSecours, setShowPremierSecours] = useState(false);
+
+  // Réinitialiser l'affichage des réponses lorsque la question change
+  useEffect(() => {
+    setShowVerification(false);
+    setShowSecurite(false);
+    setShowPremierSecours(false);
+  }, [question]);
 
   return (
     <div className="question-display">

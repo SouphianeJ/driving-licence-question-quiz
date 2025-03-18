@@ -3,9 +3,12 @@ import QuestionDisplay from '../components/QuestionDisplay';
 
 export default function Home() {
   const [question, setQuestion] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchRandomQuestion = async () => {
+    setLoading(true);
     const response = await fetch('/api/random-question');
+    setLoading(false);
     const data = await response.json();
     setQuestion(data);
   };
@@ -17,7 +20,7 @@ export default function Home() {
   return (
     <div className="container">
       <h1>Questions Permis</h1>
-      {question && <QuestionDisplay question={question} />}
+      {loading ? <p>Loading...</p> : question && <QuestionDisplay question={question} />}
       <button style={{ backgroundColor: '#492fc0'}} onClick={fetchRandomQuestion}>Nouvelle question</button>
     </div>
   );
