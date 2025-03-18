@@ -16,9 +16,9 @@ export default function Home() {
 
   return (
     <div className="container">
-      <h1>Mini Application de Questions</h1>
+      <h1>Questions Permis</h1>
       {question && <QuestionDisplay question={question} />}
-      <button onClick={fetchRandomQuestion}>Nouvelle question</button>
+      <button onClick={fetchRandomQuestion} style="background-color: #4f5faf;">Nouvelle question</button>
     </div>
   );
 }
