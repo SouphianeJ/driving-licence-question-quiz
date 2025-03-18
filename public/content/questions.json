@@ -1,4 +1,4 @@
-[
+{
     {
       "number": 1,
       "verification": {
@@ -961,7 +961,5 @@
         "answer": "Arrêter le véhicule en sécurité et consulter un technicien ou appeler les secours."
       }
     }
-  
-
-]
+  }
 
