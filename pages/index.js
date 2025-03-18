@@ -18,7 +18,7 @@ export default function Home() {
     <div className="container">
       <h1>Questions Permis</h1>
       {question && <QuestionDisplay question={question} />}
-      <button onClick={fetchRandomQuestion} id="newq">Nouvelle question</button>
+      <button style={{ background-color: '#492fc0'}} onClick={fetchRandomQuestion}>Nouvelle question</button>
     </div>
   );
 }
