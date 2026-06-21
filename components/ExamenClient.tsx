@@ -23,8 +23,14 @@ function emptyVerdict(): Verdict {
   return { verification: null, securite: null, premiers_secours: null };
 }
 
-export function ExamenClient({ questions }: { questions: Question[] }) {
-  const { addExam } = useProgress();
+export function ExamenClient({
+  questions,
+  namespace,
+}: {
+  questions: Question[];
+  namespace: string;
+}) {
+  const { addExam } = useProgress(namespace);
   const [phase, setPhase] = useState<Phase>("setup");
   const [count, setCount] = useState(5);
   const [deck, setDeck] = useState<Question[]>([]);

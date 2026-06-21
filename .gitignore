@@ -30,3 +30,6 @@ next-env.d.ts
 # editor
 .vscode
 .idea
+
+# local data store (file-based persistence)
+/.data

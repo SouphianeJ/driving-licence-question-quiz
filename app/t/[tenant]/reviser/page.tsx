@@ -2,13 +2,9 @@ import type { Metadata } from "next";
 import { QUESTIONS } from "@/lib/questions";
 import { ReviserClient } from "@/components/ReviserClient";
 
-export const metadata: Metadata = {
-  title: "Réviser",
-  description:
-    "Parcourez les fiches de l'interrogation orale du permis B avec réponses masquées et suivi de votre progression.",
-};
+export const metadata: Metadata = { title: "Réviser" };
 
-export default function ReviserPage() {
+export default function ReviserPage({ params }: { params: { tenant: string } }) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <header className="mb-8">
@@ -17,7 +13,7 @@ export default function ReviserPage() {
           Lisez chaque énoncé, formulez votre réponse à voix haute, puis vérifiez.
         </p>
       </header>
-      <ReviserClient questions={QUESTIONS} />
+      <ReviserClient questions={QUESTIONS} namespace={params.tenant} />
     </div>
   );
 }

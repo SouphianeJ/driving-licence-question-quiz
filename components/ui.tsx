@@ -131,6 +131,29 @@ export function PositionBadge({ position }: { position: VerificationPosition }) 
   );
 }
 
+export const inputClass =
+  "w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:border-brand-400";
+
+export const labelClass = "block text-sm font-medium text-slate-700";
+
+export function FormAlert({ state }: { state: { error?: string; success?: string } }) {
+  if (state.error) {
+    return (
+      <p className="rounded-xl border border-rose-200 bg-rose-50 px-3.5 py-2.5 text-sm text-rose-700">
+        {state.error}
+      </p>
+    );
+  }
+  if (state.success) {
+    return (
+      <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-3.5 py-2.5 text-sm text-emerald-700">
+        {state.success}
+      </p>
+    );
+  }
+  return null;
+}
+
 export function ProgressBar({
   value,
   max,

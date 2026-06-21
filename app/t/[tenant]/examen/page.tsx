@@ -2,13 +2,9 @@ import type { Metadata } from "next";
 import { QUESTIONS } from "@/lib/questions";
 import { ExamenClient } from "@/components/ExamenClient";
 
-export const metadata: Metadata = {
-  title: "Examen blanc",
-  description:
-    "Simulez l'interrogation orale du permis B : tirage aléatoire, auto-évaluation et score détaillé par thème.",
-};
+export const metadata: Metadata = { title: "Examen blanc" };
 
-export default function ExamenPage() {
+export default function ExamenPage({ params }: { params: { tenant: string } }) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <header className="mb-8">
@@ -17,7 +13,7 @@ export default function ExamenPage() {
           Mettez-vous en condition réelle et mesurez votre niveau.
         </p>
       </header>
-      <ExamenClient questions={QUESTIONS} />
+      <ExamenClient questions={QUESTIONS} namespace={params.tenant} />
     </div>
   );
 }

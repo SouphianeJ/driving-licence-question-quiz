@@ -5,8 +5,8 @@ import { useProgress } from "@/lib/storage";
 import { ButtonLink, Button, Card, ProgressBar } from "./ui";
 import { ChartIcon } from "./icons";
 
-export function ProgressionClient() {
-  const { state, hydrated, reset } = useProgress();
+export function ProgressionClient({ namespace }: { namespace: string }) {
+  const { state, hydrated, reset } = useProgress(namespace);
 
   if (!hydrated) {
     return <p className="text-slate-500">Chargement de votre progression…</p>;
@@ -51,7 +51,7 @@ export function ProgressionClient() {
             <p className="mt-3 text-sm text-slate-500">
               Aucun examen blanc pour l&apos;instant.
             </p>
-            <ButtonLink href="/examen" size="sm" className="mt-4">
+            <ButtonLink href={`/t/${namespace}/examen`} size="sm" className="mt-4">
               Lancer un examen blanc
             </ButtonLink>
           </div>

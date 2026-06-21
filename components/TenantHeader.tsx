@@ -3,44 +3,54 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { brand } from "@/config/brand";
+import type { PublicUser } from "@/lib/server/types";
 import { CarIcon } from "./icons";
+import { LogoutButton } from "./LogoutButton";
 import { cn } from "./ui";
 
-const NAV = [
-  { href: "/reviser", label: "Réviser" },
-  { href: "/examen", label: "Examen blanc" },
-  { href: "/fiches", label: "Fiches" },
-  { href: "/progression", label: "Progression" },
-];
+interface TenantHeaderProps {
+  slug: string;
+  name: string;
+  logoUrl: string;
+  user: PublicUser;
+}
 
-export function SiteHeader() {
+export function TenantHeader({ slug, name, logoUrl, user }: TenantHeaderProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const base = `/t/${slug}`;
+  const nav = [
+    { href: `${base}/reviser`, label: "Réviser" },
+    { href: `${base}/examen`, label: "Examen blanc" },
+    { href: `${base}/fiches`, label: "Fiches" },
+    { href: `${base}/progression`, label: "Progression" },
+  ];
+  if (user.role === "admin" || user.role === "superadmin") {
+    nav.push({ href: `${base}/settings`, label: "Réglages" });
+  }
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link
-          href="/"
+          href={base}
           className="flex items-center gap-2 font-bold text-slate-900"
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white">
-            <CarIcon width={20} height={20} />
-          </span>
-          <span className="leading-tight">
-            {brand.name}
-            {brand.schoolName && (
-              <span className="block text-xs font-normal text-slate-500">
-                {brand.schoolName}
-              </span>
-            )}
-          </span>
+          {logoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={logoUrl} alt={name} className="h-9 w-9 rounded-xl object-contain" />
+          ) : (
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white">
+              <CarIcon width={20} height={20} />
+            </span>
+          )}
+          <span className="leading-tight">{name}</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {NAV.map((item) => {
+          {nav.map((item) => {
             const active = pathname === item.href;
             return (
               <Link
@@ -57,6 +67,8 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <span className="mx-1 h-5 w-px bg-slate-200" />
+          <LogoutButton />
         </nav>
 
         <button
@@ -74,7 +86,7 @@ export function SiteHeader() {
 
       {open && (
         <nav className="border-t border-slate-200 bg-white md:hidden">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -89,6 +101,9 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <div className="border-t border-slate-100 px-2 py-1">
+            <LogoutButton className="w-full rounded-lg px-3 py-3 text-left text-sm font-medium text-slate-600 hover:bg-slate-50" />
+          </div>
         </nav>
       )}
     </header>

@@ -23,8 +23,14 @@ const FILTERS: Array<{ value: PositionFilter; label: string }> = [
   { value: "Extérieure", label: "Extérieures" },
 ];
 
-export function ReviserClient({ questions }: { questions: Question[] }) {
-  const { state, hydrated, setCardStatus } = useProgress();
+export function ReviserClient({
+  questions,
+  namespace,
+}: {
+  questions: Question[];
+  namespace: string;
+}) {
+  const { state, hydrated, setCardStatus } = useProgress(namespace);
   const [position, setPosition] = useState<PositionFilter>("all");
   const [shuffled, setShuffled] = useState(false);
   const [index, setIndex] = useState(0);

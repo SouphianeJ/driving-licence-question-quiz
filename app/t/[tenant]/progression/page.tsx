@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import { ProgressionClient } from "@/components/ProgressionClient";
 
-export const metadata: Metadata = {
-  title: "Ma progression",
-  description:
-    "Suivez votre maîtrise des fiches et l'historique de vos examens blancs.",
-};
+export const metadata: Metadata = { title: "Ma progression" };
 
-export default function ProgressionPage() {
+export default function ProgressionPage({ params }: { params: { tenant: string } }) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <header className="mb-8">
@@ -16,7 +12,7 @@ export default function ProgressionPage() {
           Vos données restent sur cet appareil, sans création de compte.
         </p>
       </header>
-      <ProgressionClient />
+      <ProgressionClient namespace={params.tenant} />
     </div>
   );
 }

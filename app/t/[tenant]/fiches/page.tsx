@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import { QUESTIONS } from "@/lib/questions";
 import { FichesClient } from "@/components/FichesClient";
 
-export const metadata: Metadata = {
-  title: "Toutes les fiches",
-  description:
-    "Consultez l'intégralité des fiches de l'interrogation orale du permis B avec leurs réponses.",
-};
+export const metadata: Metadata = { title: "Toutes les fiches" };
 
 export default function FichesPage() {
   return (
