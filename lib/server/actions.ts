@@ -39,7 +39,7 @@ export async function loginAction(
   const password = String(formData.get("password") || "");
   const next = String(formData.get("next") || "");
 
-  const user = getUserByEmail(email);
+  const user = await getUserByEmail(email);
   if (!user || !verifyPassword(password, user.passwordHash, user.salt)) {
     return fail("E-mail ou mot de passe incorrect.");
   }
@@ -59,11 +59,11 @@ export async function createTenantAction(
   _prev: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const me = getCurrentUser();
+  const me = await getCurrentUser();
   if (me?.role !== "superadmin") return fail("Action non autorisée.");
 
   try {
-    const tenant = createTenant({
+    const tenant = await createTenant({
       slug: String(formData.get("slug") || ""),
       name: String(formData.get("name") || ""),
       color: String(formData.get("color") || ""),
@@ -82,7 +82,7 @@ export async function createUserAction(
   _prev: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const me = getCurrentUser();
+  const me = await getCurrentUser();
   if (!me) return fail("Action non autorisée.");
 
   const email = String(formData.get("email") || "");
@@ -106,7 +106,7 @@ export async function createUserAction(
   }
 
   try {
-    createUser({ email, password, role, tenantSlug });
+    await createUser({ email, password, role, tenantSlug });
     if (tenantSlug) revalidatePath(`/t/${tenantSlug}/settings`);
     revalidatePath("/admin");
     return { success: `Compte ${email} créé.` };
@@ -119,11 +119,11 @@ export async function deleteUserAction(
   _prev: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const me = getCurrentUser();
+  const me = await getCurrentUser();
   if (!me) return fail("Action non autorisée.");
 
   const targetId = String(formData.get("userId") || "");
-  const target = getUserById(targetId);
+  const target = await getUserById(targetId);
   if (!target) return fail("Compte introuvable.");
   if (target.id === me.id) return fail("Vous ne pouvez pas supprimer votre propre compte.");
 
@@ -135,7 +135,7 @@ export async function deleteUserAction(
     return fail("Action non autorisée.");
   }
 
-  deleteUser(targetId);
+  await deleteUser(targetId);
   if (target.tenantSlug) revalidatePath(`/t/${target.tenantSlug}/settings`);
   revalidatePath("/admin");
   return { success: "Compte supprimé." };
@@ -147,18 +147,18 @@ export async function updateBrandingAction(
   _prev: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const me = getCurrentUser();
+  const me = await getCurrentUser();
   if (!me) return fail("Action non autorisée.");
 
   const slug = String(formData.get("slug") || "");
-  if (!getTenant(slug)) return fail("Tenant introuvable.");
+  if (!(await getTenant(slug))) return fail("Tenant introuvable.");
 
   const allowed =
     me.role === "superadmin" || (me.role === "admin" && me.tenantSlug === slug);
   if (!allowed) return fail("Action non autorisée.");
 
   try {
-    updateTenantBranding(slug, {
+    await updateTenantBranding(slug, {
       name: String(formData.get("name") || ""),
       color: String(formData.get("color") || ""),
       logoUrl: String(formData.get("logoUrl") || ""),

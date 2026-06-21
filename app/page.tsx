@@ -8,8 +8,8 @@ import { ArrowRightIcon, CarIcon } from "@/components/icons";
 
 export const dynamic = "force-dynamic";
 
-export default function HomePage() {
-  const tenants = listTenants();
+export default async function HomePage() {
+  const tenants = await listTenants();
 
   return (
     <>

@@ -9,17 +9,17 @@ import { AppFooter } from "@/components/AppFooter";
 
 export const dynamic = "force-dynamic";
 
-export default function TenantLayout({
+export default async function TenantLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { tenant: string };
 }) {
-  const tenant = getTenant(params.tenant);
+  const tenant = await getTenant(params.tenant);
   if (!tenant) notFound();
 
-  const user = requireTenantAccess(params.tenant);
+  const user = await requireTenantAccess(params.tenant);
 
   // Palette injectée localement pour ce tenant (recolorise toute l'interface).
   const palette = buildPalette(tenant.color);

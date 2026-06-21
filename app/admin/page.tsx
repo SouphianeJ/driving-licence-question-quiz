@@ -13,10 +13,10 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = { title: "Console superadmin" };
 
-export default function AdminPage() {
-  const me = requireRole("superadmin", "/admin");
-  const tenants = listTenants();
-  const users = listUsers();
+export default async function AdminPage() {
+  const me = await requireRole("superadmin", "/admin");
+  const tenants = await listTenants();
+  const users = await listUsers();
 
   return (
     <>

@@ -1,25 +1,70 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { MongoClient, type Db, type Collection } from "mongodb";
 import { hashPassword, newId } from "./crypto";
-import type { StoreData, Tenant, User } from "./types";
+import type { Tenant, User } from "./types";
 
 /**
- * Persistance fichier (JSON) derrière une API simple.
+ * Persistance MongoDB (Atlas) — driver officiel.
  *
- * Cette couche est volontairement isolée : remplacer le contenu de ce module
- * par un véritable SGBD (MongoDB, Postgres…) ne demande aucune modification du
- * reste de l'application. Aucune dépendance externe n'est requise.
+ * La connexion est mise en cache au niveau du process (réutilisée entre les
+ * requêtes et survit au Hot Reload en développement). Le schéma est garanti
+ * par des index uniques ; un seed idempotent crée le superadmin et un tenant
+ * de démonstration au premier démarrage.
  */
 
-const DATA_DIR = process.env.DATA_DIR || join(process.cwd(), ".data");
-const STORE_PATH = join(DATA_DIR, "store.json");
-
+const URI = process.env.MONGODB_URI;
+const DB_NAME = process.env.MONGODB_DB || "permis_oral";
 const SLUG_RE = /^[a-z0-9](?:[a-z0-9-]{1,38}[a-z0-9])?$/;
 
-function seed(): StoreData {
+// Cache de connexion partagé (évite l'épuisement du pool en dev / serverless).
+const globalForMongo = globalThis as unknown as {
+  _mongoClientPromise?: Promise<MongoClient>;
+  _mongoReady?: Promise<void>;
+};
+
+function clientPromise(): Promise<MongoClient> {
+  if (!URI) {
+    throw new Error(
+      "MONGODB_URI n'est pas défini. Renseignez la chaîne de connexion MongoDB Atlas."
+    );
+  }
+  if (!globalForMongo._mongoClientPromise) {
+    globalForMongo._mongoClientPromise = new MongoClient(URI).connect();
+  }
+  return globalForMongo._mongoClientPromise;
+}
+
+async function db(): Promise<Db> {
+  return (await clientPromise()).db(DB_NAME);
+}
+
+function tenantsCol(database: Db): Collection<Tenant> {
+  return database.collection<Tenant>("tenants");
+}
+function usersCol(database: Db): Collection<User> {
+  return database.collection<User>("users");
+}
+
+/** Index + seed, exécutés une seule fois par process. */
+async function ready(): Promise<Db> {
+  const database = await db();
+  if (!globalForMongo._mongoReady) {
+    globalForMongo._mongoReady = (async () => {
+      await tenantsCol(database).createIndex({ slug: 1 }, { unique: true });
+      await usersCol(database).createIndex({ email: 1 }, { unique: true });
+      await usersCol(database).createIndex({ id: 1 }, { unique: true });
+      await seedIfEmpty(database);
+    })();
+  }
+  await globalForMongo._mongoReady;
+  return database;
+}
+
+async function seedIfEmpty(database: Db): Promise<void> {
+  if ((await usersCol(database).countDocuments()) > 0) return;
+
+  const now = new Date().toISOString();
   const superEmail = process.env.SUPERADMIN_EMAIL || "superadmin@permis-oral.fr";
   const superPassword = process.env.SUPERADMIN_PASSWORD || "superadmin";
-  const now = new Date().toISOString();
 
   const mkUser = (
     email: string,
@@ -39,7 +84,6 @@ function seed(): StoreData {
     };
   };
 
-  // Tenant de démonstration + comptes, pour une prise en main immédiate.
   const demo: Tenant = {
     slug: "demo",
     name: "Auto-École Démo",
@@ -48,66 +92,48 @@ function seed(): StoreData {
     createdAt: now,
   };
 
-  return {
-    tenants: [demo],
-    users: [
+  try {
+    await tenantsCol(database).insertOne(demo);
+    await usersCol(database).insertMany([
       mkUser(superEmail, superPassword, "superadmin", null),
       mkUser("admin@demo.fr", "admin", "admin", "demo"),
       mkUser("eleve@demo.fr", "eleve", "student", "demo"),
-    ],
-  };
-}
-
-function read(): StoreData {
-  if (!existsSync(STORE_PATH)) {
-    const data = seed();
-    write(data);
-    return data;
-  }
-  try {
-    const parsed = JSON.parse(readFileSync(STORE_PATH, "utf8")) as StoreData;
-    return {
-      tenants: parsed.tenants ?? [],
-      users: parsed.users ?? [],
-    };
+    ]);
   } catch {
-    const data = seed();
-    write(data);
-    return data;
+    // Seed concurrent : un autre process a déjà inséré (index uniques). On ignore.
   }
 }
 
-function write(data: StoreData): void {
-  mkdirSync(dirname(STORE_PATH), { recursive: true });
-  writeFileSync(STORE_PATH, JSON.stringify(data, null, 2), "utf8");
-}
+const strip = { projection: { _id: 0 } } as const;
 
 // ---- Tenants ----
 
-export function listTenants(): Tenant[] {
-  return read().tenants.slice().sort((a, b) => a.name.localeCompare(b.name));
+export async function listTenants(): Promise<Tenant[]> {
+  const database = await ready();
+  return tenantsCol(database).find({}, strip).sort({ name: 1 }).toArray();
 }
 
-export function getTenant(slug: string): Tenant | undefined {
-  return read().tenants.find((t) => t.slug === slug);
+export async function getTenant(slug: string): Promise<Tenant | undefined> {
+  const database = await ready();
+  return (await tenantsCol(database).findOne({ slug }, strip)) ?? undefined;
 }
 
 export function isValidSlug(slug: string): boolean {
   return SLUG_RE.test(slug);
 }
 
-export function createTenant(input: {
+export async function createTenant(input: {
   slug: string;
   name: string;
   color?: string;
   logoUrl?: string;
-}): Tenant {
-  const data = read();
+}): Promise<Tenant> {
+  const database = await ready();
   const slug = input.slug.trim().toLowerCase();
   if (!isValidSlug(slug)) {
     throw new Error("Identifiant invalide (lettres minuscules, chiffres, tirets).");
   }
-  if (data.tenants.some((t) => t.slug === slug)) {
+  if (await tenantsCol(database).findOne({ slug })) {
     throw new Error("Cet identifiant de tenant existe déjà.");
   }
   const tenant: Tenant = {
@@ -117,49 +143,57 @@ export function createTenant(input: {
     logoUrl: input.logoUrl?.trim() || "",
     createdAt: new Date().toISOString(),
   };
-  data.tenants.push(tenant);
-  write(data);
+  await tenantsCol(database).insertOne(tenant);
   return tenant;
 }
 
-export function updateTenantBranding(
+export async function updateTenantBranding(
   slug: string,
   patch: { name?: string; color?: string; logoUrl?: string }
-): Tenant {
-  const data = read();
-  const tenant = data.tenants.find((t) => t.slug === slug);
-  if (!tenant) throw new Error("Tenant introuvable.");
-  if (patch.name !== undefined) tenant.name = patch.name.trim() || tenant.name;
-  if (patch.color !== undefined) tenant.color = patch.color.trim() || tenant.color;
-  if (patch.logoUrl !== undefined) tenant.logoUrl = patch.logoUrl.trim();
-  write(data);
-  return tenant;
+): Promise<Tenant> {
+  const database = await ready();
+  const set: Partial<Tenant> = {};
+  if (patch.name?.trim()) set.name = patch.name.trim();
+  if (patch.color?.trim()) set.color = patch.color.trim();
+  if (patch.logoUrl !== undefined) set.logoUrl = patch.logoUrl.trim();
+
+  const updated = await tenantsCol(database).findOneAndUpdate(
+    { slug },
+    { $set: set },
+    { returnDocument: "after", projection: { _id: 0 } }
+  );
+  if (!updated) throw new Error("Tenant introuvable.");
+  return updated;
 }
 
 // ---- Utilisateurs ----
 
-export function getUserById(id: string): User | undefined {
-  return read().users.find((u) => u.id === id);
+export async function getUserById(id: string): Promise<User | undefined> {
+  const database = await ready();
+  return (await usersCol(database).findOne({ id }, strip)) ?? undefined;
 }
 
-export function getUserByEmail(email: string): User | undefined {
-  return read().users.find((u) => u.email === email.toLowerCase());
+export async function getUserByEmail(email: string): Promise<User | undefined> {
+  const database = await ready();
+  return (
+    (await usersCol(database).findOne({ email: email.toLowerCase() }, strip)) ??
+    undefined
+  );
 }
 
-export function listUsers(tenantSlug?: string): User[] {
-  const users = read().users;
-  const filtered =
-    tenantSlug === undefined ? users : users.filter((u) => u.tenantSlug === tenantSlug);
-  return filtered.slice().sort((a, b) => a.email.localeCompare(b.email));
+export async function listUsers(tenantSlug?: string): Promise<User[]> {
+  const database = await ready();
+  const filter = tenantSlug === undefined ? {} : { tenantSlug };
+  return usersCol(database).find(filter, strip).sort({ email: 1 }).toArray();
 }
 
-export function createUser(input: {
+export async function createUser(input: {
   email: string;
   password: string;
   role: User["role"];
   tenantSlug: string | null;
-}): User {
-  const data = read();
+}): Promise<User> {
+  const database = await ready();
   const email = input.email.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     throw new Error("Adresse e-mail invalide.");
@@ -167,13 +201,13 @@ export function createUser(input: {
   if (input.password.length < 6) {
     throw new Error("Le mot de passe doit contenir au moins 6 caractères.");
   }
-  if (data.users.some((u) => u.email === email)) {
+  if (await usersCol(database).findOne({ email })) {
     throw new Error("Un compte existe déjà avec cette adresse e-mail.");
   }
   if (input.role !== "superadmin" && !input.tenantSlug) {
     throw new Error("Un tenant est requis pour ce rôle.");
   }
-  if (input.tenantSlug && !data.tenants.some((t) => t.slug === input.tenantSlug)) {
+  if (input.tenantSlug && !(await tenantsCol(database).findOne({ slug: input.tenantSlug }))) {
     throw new Error("Tenant introuvable.");
   }
   const { hash, salt } = hashPassword(input.password);
@@ -186,13 +220,11 @@ export function createUser(input: {
     tenantSlug: input.role === "superadmin" ? null : input.tenantSlug,
     createdAt: new Date().toISOString(),
   };
-  data.users.push(user);
-  write(data);
+  await usersCol(database).insertOne(user);
   return user;
 }
 
-export function deleteUser(id: string): void {
-  const data = read();
-  data.users = data.users.filter((u) => u.id !== id);
-  write(data);
+export async function deleteUser(id: string): Promise<void> {
+  const database = await ready();
+  await usersCol(database).deleteOne({ id });
 }

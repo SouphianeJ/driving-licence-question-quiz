@@ -22,16 +22,16 @@ export function clearSessionCookie(): void {
 }
 
 /** Utilisateur courant d'après le cookie de session, ou `null`. */
-export function getCurrentUser(): User | null {
+export async function getCurrentUser(): Promise<User | null> {
   const token = cookies().get(SESSION_COOKIE)?.value;
   const uid = verifySession(token);
   if (!uid) return null;
-  return getUserById(uid) ?? null;
+  return (await getUserById(uid)) ?? null;
 }
 
 /** Exige une session ; redirige vers /login sinon. */
-export function requireUser(nextPath?: string): User {
-  const user = getCurrentUser();
+export async function requireUser(nextPath?: string): Promise<User> {
+  const user = await getCurrentUser();
   if (!user) {
     redirect(nextPath ? `/login?next=${encodeURIComponent(nextPath)}` : "/login");
   }
@@ -41,8 +41,8 @@ export function requireUser(nextPath?: string): User {
 const RANK: Record<Role, number> = { student: 1, admin: 2, superadmin: 3 };
 
 /** Exige au moins le rôle indiqué. */
-export function requireRole(min: Role, nextPath?: string): User {
-  const user = requireUser(nextPath);
+export async function requireRole(min: Role, nextPath?: string): Promise<User> {
+  const user = await requireUser(nextPath);
   if (RANK[user.role] < RANK[min]) redirect("/");
   return user;
 }
@@ -51,11 +51,11 @@ export function requireRole(min: Role, nextPath?: string): User {
  * Exige l'accès à un tenant : superadmin (tout) ou membre du tenant.
  * `requireAdmin` impose en plus le rôle admin du tenant.
  */
-export function requireTenantAccess(
+export async function requireTenantAccess(
   slug: string,
   options: { requireAdmin?: boolean } = {}
-): User {
-  const user = requireUser(`/t/${slug}`);
+): Promise<User> {
+  const user = await requireUser(`/t/${slug}`);
   if (user.role === "superadmin") return user;
   if (user.tenantSlug !== slug) redirect("/");
   if (options.requireAdmin && user.role !== "admin") redirect(`/t/${slug}`);

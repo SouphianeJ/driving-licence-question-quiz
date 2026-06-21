@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: "Connexion",
 };
 
-export default function LoginPage({
+export default async function LoginPage({
   searchParams,
 }: {
   searchParams: { next?: string };
 }) {
-  const user = getCurrentUser();
+  const user = await getCurrentUser();
   if (user) redirect(searchParams.next || defaultLanding(user));
 
   return (

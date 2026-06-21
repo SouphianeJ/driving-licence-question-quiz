@@ -5,8 +5,8 @@ import { CarIcon } from "./icons";
 import { LogoutButton } from "./LogoutButton";
 
 /** En-tête des pages globales (hors tenant). */
-export function GlobalHeader() {
-  const user = getCurrentUser();
+export async function GlobalHeader() {
+  const user = await getCurrentUser();
   return (
     <header className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">

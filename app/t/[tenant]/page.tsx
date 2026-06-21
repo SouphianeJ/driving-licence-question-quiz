@@ -39,8 +39,8 @@ const MODES = [
   },
 ];
 
-export default function TenantHome({ params }: { params: { tenant: string } }) {
-  const tenant = getTenant(params.tenant);
+export default async function TenantHome({ params }: { params: { tenant: string } }) {
+  const tenant = await getTenant(params.tenant);
   if (!tenant) notFound();
 
   const interieures = filterByPosition(QUESTIONS, "Intérieure").length;

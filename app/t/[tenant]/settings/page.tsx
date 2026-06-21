@@ -11,12 +11,12 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = { title: "Réglages" };
 
-export default function SettingsPage({ params }: { params: { tenant: string } }) {
-  const tenant = getTenant(params.tenant);
+export default async function SettingsPage({ params }: { params: { tenant: string } }) {
+  const tenant = await getTenant(params.tenant);
   if (!tenant) notFound();
 
-  const me = requireTenantAccess(params.tenant, { requireAdmin: true });
-  const users = listUsers(tenant.slug);
+  const me = await requireTenantAccess(params.tenant, { requireAdmin: true });
+  const users = await listUsers(tenant.slug);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
