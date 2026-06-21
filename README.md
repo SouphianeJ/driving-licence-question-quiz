@@ -4,7 +4,7 @@ Plateforme web SaaS d'entraînement à la **partie orale de l'épreuve pratique 
 (vérifications intérieures/extérieures, sécurité routière, premiers secours),
 **multi-tenant** : chaque auto-école dispose de son espace personnalisé et de ses comptes.
 
-> Stack : **Next.js 14 (App Router) · TypeScript · Tailwind CSS** — sans dépendance externe pour l'auth ni la persistance.
+> Stack : **Next.js 14 (App Router) · TypeScript · Tailwind CSS · MongoDB Atlas**.
 
 ## Multi-tenant par URL
 
@@ -29,12 +29,18 @@ sensible côté client).
 
 ## Démarrage
 
+1. Créez un cluster **MongoDB Atlas** et récupérez la chaîne de connexion.
+2. Copiez `.env.example` en `.env.local` et renseignez `MONGODB_URI` (et `AUTH_SECRET`).
+3. Installez et lancez :
+
 ```bash
 npm install
+npm run db:check     # vérifie la connexion à MongoDB Atlas
 npm run dev          # http://localhost:3000
 ```
 
-Au premier lancement, des données de démonstration sont créées (voir `lib/server/store.ts`) :
+Au premier lancement, si la base est vide, des données de démonstration sont
+créées (voir `lib/server/store.ts`) :
 
 | Rôle | E-mail | Mot de passe |
 | --- | --- | --- |
@@ -57,11 +63,12 @@ l'interface du tenant ; un **logo** (URL) peut également être défini.
 
 ## Persistance
 
-Les tenants et les comptes sont stockés dans un fichier JSON (`.data/store.json` par défaut,
-configurable via `DATA_DIR`). Cette couche est **isolée dans `lib/server/store.ts`** : la
-remplacer par un véritable SGBD (MongoDB, Postgres…) ne nécessite aucune modification du
-reste de l'application. La progression des élèves reste, elle, locale à l'appareil
-(localStorage, cloisonnée par tenant — RGPD).
+Les tenants et les comptes sont stockés dans **MongoDB Atlas** (driver officiel
+`mongodb`). La connexion est mise en cache au niveau du process, des **index uniques**
+garantissent l'intégrité (`tenants.slug`, `users.email`) et un **seed idempotent** crée
+les données initiales. Toute la logique d'accès est isolée dans `lib/server/store.ts`.
+La progression des élèves reste, elle, locale à l'appareil (localStorage, cloisonnée par
+tenant — RGPD).
 
 ## Architecture
 
@@ -74,7 +81,7 @@ app/
 components/                UI (en-têtes, formulaires, modules quiz)
 config/brand.ts            Identité produit (niveau plateforme)
 lib/
-  server/                  types · store (persistance) · crypto · auth · actions
+  server/                  types · store (MongoDB) · crypto · auth · actions
   questions.ts · color.ts · storage.ts · types.ts
 data/questions.json        Banque des 100 fiches (source unique de vérité)
 scripts/ · tests/          Validation et tests d'intégrité des données
